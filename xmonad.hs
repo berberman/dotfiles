@@ -7,22 +7,26 @@ import XMonad.Util.SpawnOnce
 import Data.Function ((&))
 import qualified Data.Map as M
 import XMonad.Hooks.FadeInactive
+import XMonad.Util.EZConfig (additionalKeys)
+import XMonad.Layout.Spacing
 
 main = xmonad . ewmh . docks $ kde4Config
     { modMask = mod4Mask -- use the Windows button as mod
     , focusFollowsMouse = False
     , manageHook = manageHook kde4Config <+> myManageHook <+> manageDocks
-    , layoutHook = avoidStruts  $  layoutHook kde4Config
+    , layoutHook = spacingRaw True (Border 0 10 10 10) True (Border 10 10 10 10) True $ avoidStruts $ layoutHook kde4Config
     , handleEventHook = fullscreenEventHook
-    , keys = \c -> mykeys c `M.union` keys kde4Config c
     , workspaces = named ++ map show [ (1 & (length named +))  .. 9]
     , logHook = myLogHook
-    , startupHook = startupHook kde4Config >> spawn "xcompmgr -c &"
-    }
+    , startupHook = startupHook kde4Config >> spawn "xcompmgr -cfF -t-5 -l-5 -r5 -o.55 &"
+    , borderWidth = 0
+    } `additionalKeys` myKeys
       where
         named = ["Web", "IM", "Code", "Remote"]
 
-mykeys (XConfig {modMask = modm}) = M.fromList $ [((modm , xK_r), spawn "dmenu_run")]
+myKeys = [ ((mod4Mask, xK_r), spawn "dmenu_run")
+         , ((mod4Mask .|. controlMask, xK_r), spawn "xmonad --recompile && xmonad --restart")
+         ]
 
 myManageHook = composeAll . concat $
     [ [ className   =? c --> doFloat           | c <- myFloats]
@@ -38,5 +42,4 @@ myManageHook = composeAll . concat $
       imApps        = ["telegram-desktop", "Slack", "Element (Riot)"]
    
 myLogHook :: X ()
-myLogHook = fadeInactiveLogHook fadeAmount
-    where fadeAmount = 0.9 
+myLogHook = fadeInactiveLogHook 0.9
