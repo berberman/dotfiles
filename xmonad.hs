@@ -18,7 +18,7 @@ main = xmonad . ewmh . docks $ kde4Config
     , handleEventHook = fullscreenEventHook
     , workspaces = named ++ map show [ (1 & (length named +))  .. 9]
     , logHook = myLogHook
-    , startupHook = startupHook kde4Config >> spawn "xcompmgr -cfF -t-5 -l-5 -r5 -o.55 &"
+    , startupHook = startupHook kde4Config >> spawn "picom -cCGf -m 0.85 -l 0 -t 0 --blur-method kernel &"
     , borderWidth = 0
     } `additionalKeys` myKeys
       where
