@@ -18,8 +18,9 @@ main = xmonad . ewmh . docks $ kde4Config
     , handleEventHook = fullscreenEventHook
     , workspaces = named ++ map show [ (1 & (length named +))  .. 9]
     , logHook = myLogHook
-    , startupHook = startupHook kde4Config >> spawn "picom &"
+    , startupHook = startupHook kde4Config >> spawn "picom --config ~/.xmonad/picom.conf &"
     , borderWidth = 0
+    , terminal = "alacritty"
     } `additionalKeys` myKeys
       where
         named = ["Web", "IM", "Code", "Remote"]
