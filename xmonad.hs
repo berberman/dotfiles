@@ -33,14 +33,15 @@ myManageHook = composeAll . concat $
     [ [ className   =? c --> doFloat           | c <- myFloats]
     , [ className   =? c --> doShift "IM"      | c <- imApps] 
     , [ className   =? c --> doShift "Web"     | c <- webApps]
-    , [ name        =? "~ : weechat — Konsole" --> doShift "IM"]
-    , [ name        =? "KRDC"                  --> doShift "Remote"]
+    , [ name        =? "weechat"      --> doShift "IM"]
+    , [ name        =? "KRDC"         --> doShift "Remote"]
+    , [ name        =? "Media viewer" --> doFloat]
     ]
   where
       name = stringProperty "WM_NAME"
       myFloats      = ["lattedock", "yakuake", "jetbrains-toolbox"]
-      webApps       = ["Chromium"]
-      imApps        = ["telegram-desktop", "Slack", "Element (Riot)"]
+      webApps       = ["chromium"]
+      imApps        = ["telegram-desktop", "slack", "element"]
    
 myLogHook :: X ()
 myLogHook = fadeInactiveLogHook 1.0
