@@ -10,6 +10,7 @@ import XMonad.Hooks.FadeInactive
 import XMonad.Util.EZConfig (additionalKeys)
 import XMonad.Layout.Spacing
 
+
 main = xmonad . ewmh . docks $ kde4Config
     { modMask = mod4Mask -- use the Windows button as mod
     , focusFollowsMouse = False
@@ -28,6 +29,9 @@ main = xmonad . ewmh . docks $ kde4Config
 myKeys = [ ((mod4Mask, xK_r), spawn "dmenu_run")
          , ((mod4Mask .|. controlMask, xK_r), spawn "xmonad --recompile && xmonad --restart")
          , ((mod4Mask .|. controlMask, xK_l), spawn "killall latte-dock && kstart5 latte-dock")
+         , ((mod4Mask .|. controlMask, xK_p), mySpawnOn "Web" "chromium")
+         , ((mod4Mask .|. controlMask, xK_t), mySpawnOn "IM" "telegram-desktop")
+         , ((mod4Mask .|. controlMask, xK_e), mySpawnOn "IM" "element-desktop")
          ]
 
 myManageHook = composeAll . concat $
@@ -46,3 +50,5 @@ myManageHook = composeAll . concat $
    
 myLogHook :: X ()
 myLogHook = fadeInactiveLogHook 1.0
+
+mySpawnOn workspace program = spawn program >> (windows $ W.greedyView workspace)
