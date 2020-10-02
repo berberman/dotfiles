@@ -23,10 +23,11 @@ main = xmonad . ewmh . docks $ kde4Config
     , terminal = "alacritty"
     } `additionalKeys` myKeys
       where
-        named = ["Web", "IM", "Code", "Remote"]
+        named = ["Web", "IM", "Code", "Proc", "Music"]
 
 myKeys = [ ((mod4Mask, xK_r), spawn "dmenu_run")
          , ((mod4Mask .|. controlMask, xK_r), spawn "xmonad --recompile && xmonad --restart")
+         , ((mod4Mask .|. controlMask, xK_l), spawn "killall latte-dock && kstart5 latte-dock")
          ]
 
 myManageHook = composeAll . concat $
