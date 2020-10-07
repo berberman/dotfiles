@@ -39,7 +39,8 @@ myKeys =
     ((mod4Mask .|. controlMask, xK_l), spawn "killall latte-dock && kstart5 latte-dock"),
     ((mod4Mask .|. controlMask, xK_p), mySpawnOn "Web" chromium),
     ((mod4Mask .|. controlMask, xK_t), mySpawnOn "IM" tg),
-    ((mod4Mask .|. controlMask, xK_e), mySpawnOn "IM" element)
+    ((mod4Mask .|. controlMask, xK_e), mySpawnOn "IM" element),
+    ((mod4Mask .|. controlMask, xK_d), spawn "dolphin")
   ]
 
 myManageHook =
