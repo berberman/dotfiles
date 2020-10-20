@@ -41,7 +41,8 @@ myKeys =
     ((mod4Mask .|. controlMask, xK_t), mySpawnOn "IM" tg),
     ((mod4Mask .|. controlMask, xK_e), mySpawnOn "IM" element),
     ((mod4Mask .|. controlMask, xK_d), spawn "dolphin"),
-    ((mod4Mask .|. controlMask, xK_s), spawn "systemsettings5")
+    ((mod4Mask .|. controlMask, xK_s), spawn "systemsettings5"),
+    ((mod4Mask .|. controlMask, xK_f), spawn "emacs")
   ]
 
 myManageHook =
@@ -55,7 +56,7 @@ myManageHook =
     ]
   where
     name = stringProperty "WM_NAME"
-    floatByClass = ["lattedock", "yakuake", "jetbrains-toolbox"]
+    floatByClass = ["lattedock", "yakuake", "jetbrains-toolbox", "peek"]
     floatByName = ["Media viewer"]
     ignoreByClass = ["plasmashell"]
     webApps = [chromium]
