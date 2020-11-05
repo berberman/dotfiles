@@ -118,8 +118,6 @@ source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 source ~/.oh-my-zsh/custom/themes/powerlevel10k/powerlevel10k.zsh-theme
 
-export HACKAGE_API_TOKEN=044a8bed848c9ba71295ae11120869d3715d3af908b071bf46adf75ea8d32496
-
 export PATH="/home/berberman/.local/bin:/home/berberman/.cabal/bin:$PATH"
 
 alias logoutkde='qdbus org.kde.ksmserver /KSMServer logout 0 0 0'
