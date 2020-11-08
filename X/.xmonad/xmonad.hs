@@ -21,7 +21,7 @@ main =
         handleEventHook = fullscreenEventHook,
         workspaces = myWorkspaces,
         logHook = myLogHook,
-        startupHook = startupHook kde4Config >> spawn "picom &",
+        startupHook = startupHook kde4Config >> spawn "picom --experimental-backends &",
         borderWidth = 0,
         terminal = "alacritty"
       }
@@ -35,7 +35,8 @@ myLayoutHook = spac (ThreeCol 1 (3 / 100) (1 / 2) ||| ThreeColMid 1 (3 / 100) (1
 
 myKeys =
   [ ((mod4Mask, xK_r), spawn "rofi -combi-modi drun -theme Adapta-Nokto -show combi -show-icons"),
-    ((mod4Mask .|. controlMask, xK_r), spawn "xmonad --recompile && xmonad --restart"),
+    ((mod4Mask .|. controlMask, xK_r), spawn "xmonad --recompile && xmonad --restart" 
+        >> spawn "killall picom && picom --experimental-backends &"),
     ((mod4Mask .|. controlMask, xK_l), spawn "killall latte-dock && kstart5 latte-dock"),
     ((mod4Mask .|. controlMask, xK_p), mySpawnOn "Web" chromium),
     ((mod4Mask .|. controlMask, xK_t), mySpawnOn "IM" tg),
