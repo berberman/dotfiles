@@ -13,7 +13,7 @@ import XMonad.Util.SpawnOnce
 
 main =
   xmonad . ewmh . docks $
-    kde4Config
+    defaultConfig
       { modMask = mod4Mask,
         focusFollowsMouse = False,
         manageHook = manageHook kde4Config <+> myManageHook <+> manageDocks,
@@ -29,9 +29,12 @@ main =
 
 myWorkspaces = let n = ["Web", "IM", "Code", "Proc", "Music"] in n ++ map show [(1 & (length n +)) .. 8]
 
-spac = spacingRaw True (Border 0 10 10 10) True (Border 10 10 10 10) True . avoidStruts
+spac = spacingRaw False (Border 0 15 10 10) True (Border 5 5 5 5) True . avoidStruts
 
-myLayoutHook = spac (ThreeCol 1 (3 / 100) (1 / 2) ||| ThreeColMid 1 (3 / 100) (1 / 2) ||| Mirror (Tall 1 (3 / 100) (1 / 2)) ||| Full)
+spac' = spacingRaw False (Border 200 200 200 200) True (Border 5 5 5 5) True . avoidStruts
+
+myLayoutHook = spac ((ThreeCol 1 (3 / 100) (1 / 2) ||| ThreeColMid 1 (3 / 100) (1 / 2) ||| Mirror (Tall 1 (3 / 100) (1 / 2)) ||| Full) |||  spac' (Tall 1 (3 / 100) (1 / 2)))
+
 
 myKeys =
   [ ((mod4Mask, xK_r), spawn "~/.config/rofi/launchers/launcher.sh"),
