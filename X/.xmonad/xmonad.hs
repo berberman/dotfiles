@@ -13,7 +13,7 @@ import XMonad.Util.SpawnOnce
 
 main =
   xmonad . ewmh . docks $
-    defaultConfig
+    kde4Config
       { modMask = mod4Mask,
         focusFollowsMouse = False,
         manageHook = manageHook kde4Config <+> myManageHook <+> manageDocks,
