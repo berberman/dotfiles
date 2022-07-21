@@ -9,41 +9,26 @@
 --
 -- This config file was generated using the following versions
 -- of Cabal and cabal-install:
--- Cabal library version: 3.2.0.0
--- cabal-install version: 3.2.0.0
+-- Cabal library version: 3.6.2.0
+-- cabal-install version: 3.6.2.0
 
 
--- repository mirrors.tuna.tsinghua.edu.cn
---  url: http://mirrors.tuna.tsinghua.edu.cn/hackage
--- repository mirrors.bfsu.edu.cn
---  url: http://mirrors.bfsu.edu.cn/hackage
 repository hackage.haskell.org
   url: http://hackage.haskell.org/
-library-vanilla: False
-shared: True
-executable-dynamic: True
-program-default-options
-  ghc-options:
-    -dynamic
-
--- repository hackage.haskell.org
---  url: http://hackage.haskell.org/
   -- secure: True
   -- root-keys:
   -- key-threshold: 3
 
 -- default-user-config:
--- require-sandbox: False
--- ignore-sandbox: False
 -- ignore-expiry: False
 -- http-transport:
 -- nix: False
 -- local-no-index-repo:
 remote-repo-cache: /home/berberman/.cabal/packages
--- local-repo:
 -- logs-dir: /home/berberman/.cabal/logs
 world-file: /home/berberman/.cabal/world
 -- store-dir:
+-- active-repositories:
 -- verbose: 1
 -- compiler: ghc
 -- cabal-file:
@@ -96,6 +81,7 @@ extra-prog-path: /home/berberman/.cabal/bin
 -- write-ghc-environment-files:
 -- documentation: False
 -- doc-index-file: $datadir/doc/$arch-$os-$compiler/index.html
+-- only-download: False
 -- target-package-db:
 -- max-backjumps: 4000
 -- reorder-goals: False
@@ -116,7 +102,7 @@ extra-prog-path: /home/berberman/.cabal/bin
 -- symlink-bindir:
 build-summary: /home/berberman/.cabal/logs/build.log
 -- build-log:
-remote-build-reporting: anonymous
+remote-build-reporting: none
 -- report-planning-failure: False
 -- per-component: True
 -- one-shot: False
@@ -124,9 +110,7 @@ remote-build-reporting: anonymous
 jobs: $ncpus
 -- keep-going: False
 -- offline: False
--- project-file:
 -- lib: False
--- ignore-project: False
 -- package-env:
 -- overwrite-policy:
 -- install-method:
@@ -155,13 +139,13 @@ haddock
 
 init
   -- interactive: False
-  -- cabal-version: 1.10
-  -- license: BSD3
+  -- cabal-version: 2.4
+  -- license:
   -- tests:
   -- test-dir:
   -- language: Haskell2010
-  -- application-dir:
-  -- source-dir:
+  -- application-dir: app
+  -- source-dir: src
 
 install-dirs user
   -- prefix: /home/berberman/.cabal

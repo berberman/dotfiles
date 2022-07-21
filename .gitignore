@@ -2,3 +2,7 @@
 *.hi
 *.errors
 *-linux
+haskell/.cabal/logs/
+haskell/.cabal/packages/
+haskell/.cabal/store/
+haskell/.ghc/ghci_history
